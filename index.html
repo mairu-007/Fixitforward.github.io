@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>FixItForward - เปลี่ยนโรงเรียนด้วยไอเดียของคุณ</title>
+    <!-- Google Fonts + Thai Support -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f7fc;
+            font-family: 'Inter', 'IBM Plex Sans Thai', sans-serif;
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+
+        /* main container with max-width */
+        .page {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
+        }
+
+        /* navigation - simplified, only logo and no menu items */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+            background: white;
+            border-bottom: 1px solid #e2edf2;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-area h1 {
+            font-family: 'Kanit', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .logo-area span {
+            font-size: 14px;
+            color: #4b5563;
+            display: block;
+            font-weight: 500;
+        }
+
+        /* hero section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem 2.5rem;
+            background: linear-gradient(120deg, #ffffff 60%, #eef2ff 100%);
+            gap: 2rem;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-text h2 {
+            font-family: 'Kanit', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .hero-text .highlight {
+            color: #2563eb;
+            border-bottom: 3px solid #facc15;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #334155;
+            margin: 1rem 0 1.8rem 0;
+            max-width: 550px;
+        }
+        
+        /* intro statement (philosophy) */
+        .philosophy {
+            background: #f8fafd;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            border-top: 1px solid #e2edf2;
+            border-bottom: 1px solid #e2edf2;
+        }
+        .philosophy p {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.18rem;
+            line-height: 1.5;
+            color: #1e293b;
+        }
+        .philosophy strong {
+            color: #1e40af;
+        }
+
+        /* problems grid - updated */
+        .problems-section {
+            padding: 3rem 2.5rem;
+            background: white;
+        }
+        .section-title {
+            font-family: 'Kanit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .problem-card {
+            background: #f1f5f9;
+            border-radius: 24px;
+            padding: 1.8rem 1.2rem;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.15);
+        }
+        .problem-card i {
+            font-size: 2.8rem;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        .problem-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+        }
+        .problem-card p {
+            color: #475569;
+            line-height: 1.4;
+        }
+
+        /* solution highlight */
+        .solution-box {
+            background: linear-gradient(115deg, #eef2ff, #ffffff);
+            border-left: 8px solid #3b82f6;
+            border-radius: 28px;
+            padding: 2rem 2rem;
+            margin: 2rem 0;
+            text-align: left;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+        }
+
+        /* Report Problem Section */
+        .report-section {
+            padding: 2rem 2.5rem 3rem 2.5rem;
+            background: linear-gradient(135deg, #fef9e3 0%, #ffffff 100%);
+            text-align: center;
+            border-bottom: 1px solid #e2edf2;
+        }
+        .report-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 40px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #fde68a;
+        }
+        .report-icon {
+            font-size: 3.5rem;
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+        .report-title {
+            font-family: 'Kanit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+        .report-desc {
+            color: #4b5563;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+        .btn-report {
+            background: #f59e0b;
+            color: white;
+            border: none;
+            padding: 1rem 2.8rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            font-family: 'Kanit', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-report:hover {
+            background: #d97706;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -8px rgba(245, 158, 11, 0.4);
+        }
+        .btn-report i {
+            font-size: 1.3rem;
+        }
+
+        /* footer - updated as requested */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 2rem 2.5rem;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+        }
+        .contact-footer {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+        }
+        i.fa, i.far, i.fas {
+            margin-right: 6px;
+        }
+        @media (max-width: 750px) {
+            .navbar { flex-direction: column; text-align: center; }
+            .hero-text h2 { font-size: 2.2rem; }
+            .hero { flex-direction: column; }
+            .problems-grid { gap: 1rem; }
+            .report-container { padding: 1.5rem; }
+            .report-title { font-size: 1.5rem; }
+        }
+        button { cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- navigation: only logo -->
+    <div class="navbar">
+        <div class="logo-area">
+            <h1>FIXITFORWARD</h1>
+            <span>เปลี่ยนไอเดีย → การเปลี่ยนแปลงจริง</span>
+        </div>
+    </div>
+
+    <!-- hero section -->
+    <div class="hero">
+        <div class="hero-text">
+            <h2>Welcome to <span class="highlight">FixitForward</span></h2>
+            <p>FixItForward คือพื้นที่ที่นักเรียนลงมือแก้ปัญหาจริง ตั้งแต่สนามบาสพังไปจนถึงมุมอ่านหนังสือในฝัน ไม่ใช่แค่ร้องเรียน แต่คือเวิร์กช็อปสร้างการเปลี่ยนแปลง</p>
+        </div>
+    </div>
+
+    <!-- philosophy section -->
+    <div class="philosophy">
+        <p>FIXITFORWARD เกิดขึ้นจากปรัชญาการศึกษาที่เชื่อว่า <strong>“การเรียนรู้ที่แท้ต้องเชื่อมโยงกับชีวิตจริง”</strong> และ <strong>“นักเรียนไม่ควรเป็นเพียงผู้รับความรู้ แต่เป็นผู้สร้างการเปลี่ยนแปลง”</strong> เราต้องการพื้นที่ที่นักเรียนสามารถนำความคิดสร้างสรรค์มาสร้างผลกระทบจริงต่อสภาพแวดล้อมที่ใช้ชีวิตทุกวัน</p>
+    </div>
+
+    <!-- problems section -->
+    <div class="problems-section">
+        <div class="section-title">📌 ตัวอย่างปัญหารอบตัวที่รอคุณแก้</div>
+        <div class="problems-grid">
+            <div class="problem-card">
+                <i class="fas fa-tools"></i>
+                <h4>อุปกรณ์หรือเครื่องใช้ชำรุด</h4>
+                <p>อุปกรณ์การเรียน อุปกรณ์กีฬา หรือเครื่องใช้ในโรงเรียนที่เสียและรอการซ่อมแซม</p>
+            </div>
+            <div class="problem-card">
+                <i class="fas fa-tree"></i>
+                <h4>สภาพแวดล้อมไม่น่าใช้งาน</h4>
+                <p>มุมโรงเรียนรก ขาดพื้นที่สีเขียว หรือบรรยากาศไม่เอื้อต่อการเรียนรู้</p>
+            </div>
+            <div class="problem-card">
+                <i class="fas fa-shield-alt"></i>
+                <h4>ความปลอดภัยรอบตัว</h4>
+                <p>ทางเดินลื่น ไฟส่องสว่างไม่เพียงพอ หรือจุดเสี่ยงอันตรายภายในโรงเรียน</p>
+            </div>
+            <div class="problem-card">
+                <i class="fas fa-recycle"></i>
+                <h4>ขยะและสิ่งแวดล้อม</h4>
+                <p>ถังขยะไม่เพียงพอ การแยกขยะ หรือพื้นที่สกปรกที่ต้องการความร่วมมือ</p>
+            </div>
+        </div>
+        <div class="solution-box">
+            <i class="fas fa-comment-dots" style="font-size: 2rem; color:#2563eb; margin-bottom: 1rem; display: inline-block;"></i>
+            <p style="font-size: 1.1rem; font-weight: 500;">แต่ช่องทางการสื่อสารแบบเดิมทำให้เสียงนักเรียนไม่ถูกได้ยิน หรือกระบวนการเสนอแนะยุ่งยากเกินไป <strong>FIXITFORWARD</strong> ถูกออกแบบมาเพื่อเติมเต็มช่องว่างนี้ — ให้ทุกปัญหากลายเป็นโอกาสลงมือทำ</p>
+        </div>
+    </div>
+
+    <!-- Report Problem Section -->
+    <div class="report-section">
+        <div class="report-container">
+            <div class="report-icon">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="report-title">พบปัญหา? รายงานได้ที่นี่</div>
+            <div class="report-desc">
+                คุณสามารถแจ้งปัญหาที่พบเห็นในโรงเรียนได้ง่ายๆ เพียงกดปุ่มด้านล่าง 
+                แล้วทีมงาน FixItForward จะช่วยประสานงานเพื่อหาแนวทางแก้ไขร่วมกับครูและเพื่อนๆ
+            </div>
+            <button class="btn-report" id="reportProblemBtn">
+                <i class="fas fa-flag-checkered"></i> รายงานปัญหา
+            </button>
+        </div>
+    </div>
+
+    <!-- Contact section - updated with new email and school name -->
+    <footer>
+        <div style="font-family: 'Kanit', sans-serif; font-size: 1.3rem; margin-bottom: 0.5rem;">ติดต่อเรา:</div>
+        <div><i class="fas fa-envelope"></i> fixitforward.pkw@gmail.com
+          |  <i class="fas fa-phone-alt"></i> 099-219-3810</div>
+        <div class="contact-footer"><i class="fas fa-school"></i> โรงเรียนภูเก็ตวิทยาลัย</div>
+        <div style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.7;">FixItForward — สร้างโดยนักเรียน เพื่อการเปลี่ยนแปลงที่แท้จริง</div>
+    </footer>
+</div>
+
+<!-- interactive alerts (demo) -->
+<script>
+    // Report button redirects to ProblemReportFif.html
+    document.getElementById('reportProblemBtn').addEventListener('click', () => {
+        window.location.href = 'ProblemReportFif-1.html';
+    });
+</script>
+</body>
+</html>
